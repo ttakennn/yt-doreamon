@@ -6,11 +6,7 @@ import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
-export interface IHeaderProps {
-  toggleTheme?: (theme: string) => void;
-}
-
-export default function Header(props: IHeaderProps) {
+export default function Header() {
   const [firstRender, setFirstRender] = useState(true);
 
   const [mode, setMode] = useState<boolean>(() => {
@@ -36,7 +32,7 @@ export default function Header(props: IHeaderProps) {
   return (
     <AppBar position="static" color="primary">
       <Container maxWidth="md">
-        <Toolbar variant="regular" sx={{ width: "100%" }}>
+        <Toolbar variant="regular" sx={{ width: "100%" }} disableGutters>
           <Box>
             <Image
               priority
