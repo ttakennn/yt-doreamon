@@ -3,6 +3,7 @@ import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import { fetchMovies } from "./api/movei-api";
 import { MovieProps } from "@/interface";
 import MovieCard from "@/components/movie/movie-card";
+import MovieLoadMore from "@/components/movie/movie-load-more";
 
 export default async function Home() {
   const movieResponse = await fetchMovies(1);
@@ -32,6 +33,9 @@ export default async function Home() {
                 </Grid>
               ))}
             </Grid>
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <MovieLoadMore />
           </Box>
         </Container>
       </Box>

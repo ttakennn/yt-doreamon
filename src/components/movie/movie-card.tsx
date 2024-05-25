@@ -16,6 +16,9 @@ import {
   styled,
 } from "@mui/material";
 import { blue } from "@mui/material/colors";
+import { motion } from "framer-motion";
+
+const MotionCard = motion(Card);
 
 const CustomHeader = styled(CardHeader)(() => ({
   "> div > span": {
@@ -34,7 +37,17 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   if (!movie) return null;
 
   return (
-    <Card>
+    <MotionCard
+      variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        delay: movie.id * 0.08,
+        ease: "easeInOut",
+        duration: 0.5,
+      }}
+      viewport={{ amount: 0 }}
+    >
       <Tooltip title={movie.title} placement="top">
         <Box>
           <CustomHeader
@@ -136,7 +149,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           </Tooltip>
         </Box>
       </CardContent>
-    </Card>
+    </MotionCard>
   );
 };
 
